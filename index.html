@@ -45,14 +45,22 @@
             </div>
 
         <!--Section2: Popular stock news-->
-            <div class="col s6">
-                <h2>Recent Stock News</h2>
-            
-                <div></div> <!--stock news-->
-            </div>
+        <div class="col s6">
+            <h2>Recent Stock News</h2>
+            <form>
+                <div class="input-field">
+                    <input placeholder="Find what you need!" id="stocks" type="text" class="validate">
+                    <label for="search">Search</label>
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>
+                    <div id="display-title"></div>
+                </div>
+            </form>    
         </div>
 
-
     </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./app.js"></script>
 </body>
 </html>

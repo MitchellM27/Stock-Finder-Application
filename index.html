@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--add materialize cdn -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Stock Finder Application</title>
 </head>
 <body>
     <main>
         <!--NavBar-->
-        <nav></nav>
-
-        <header>
-            <h1>Stock Finder Application</h1>
-        </header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center">Stack Finder Application</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </nav>
 
         <!--Section1: Search button, Search Bar, list of popular stocks-->
-        <section>
-            <div></div> <!--search bar-->
+        <div class="row"> 
 
-            <div> <!--list of popular stocks-->
-                <h2>Popular Stocks</h3>
+            <div class="col s6"> 
+                <!--search bar-->
+                    <form class="custom-search">
+                        <div class="input-field">
+                        <input id="search" type="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                 
+                <!--list of popular stocks-->
+                <h2 id="popStocks">Popular Stocks</h3>
                 <ul>
                     <li>Stock 1</li>
                     <li>Stock 2</li>
@@ -30,14 +43,15 @@
                     <li>Stock 5</li>
                 </ul>
             </div>
-        </section>
 
         <!--Section2: Popular stock news-->
-        <section>
-            <h2>Recent Stock News</h2>
+            <div class="col s6">
+                <h2>Recent Stock News</h2>
             
-            <div></div> <!--stock news-->
-        </section>
+                <div></div> <!--stock news-->
+            </div>
+        </div>
+
 
     </main>
 </body>

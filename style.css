@@ -27,7 +27,7 @@ nav{
 
 .custom-search{
     margin-top: 15%;
-    width: 50%;
+    width: 100%;
     background: var(--custom-gradient)
 }
 
@@ -44,3 +44,17 @@ i{
     color: rgb(159, 140, 33);
     
 }
+
+.stock-news {
+    padding-left: 60px;
+}
+
+header, main, footer {
+    padding-left: 300px;
+  }
+
+  @media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+  }

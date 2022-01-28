@@ -9,6 +9,10 @@ function getApi() {
     displayTitle.innerHTML = '';
     var searchValue = userInput.value; 
 
+    if (!userInput.value) {
+        return;
+    }
+
     fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ searchValue + '&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
     .then(response => {
         return response.json();
@@ -27,7 +31,8 @@ function getApi() {
 
             displayTitle.append(storyName);
             displayTitle.append(displayLink);
-        }        
+        }
+        
     })
     .catch(err => {
         console.error(err);

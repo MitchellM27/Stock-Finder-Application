@@ -28,9 +28,8 @@
                 <!--search bar-->
                     <form class="custom-search">
                         <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
+                        <input placeholder="Company ticker here!" id="search" type="text" class="validate">
+                        <a class="waves-effect waves-light btn dropdown-trigger modal-trigger z-depth-2" href="#" id="search-button">Search</a>
                         </div>
                     </form>
                  
@@ -50,7 +49,7 @@
             <h2>Latest News</h2>
             <form>
                 <div class="input-field">
-                    <input placeholder=" Type here!" id="stocks" type="text" class="validate">
+                    <input placeholder=" Type here!" id="news" type="text" class="validate">
                     <a class="waves-effect waves-light btn dropdown-trigger modal-trigger z-depth-2" href="#modal1" id="fetch-button">Search</a>
                     <div id="display-title"></div>
                 </div>
@@ -61,6 +60,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./results.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>

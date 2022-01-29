@@ -1,8 +1,7 @@
 var button = document.getElementById('fetch-button');
-var infoButton = document.getElementById('fetch-info-button');
 var displayTitle = document.getElementById('display-title');
-var displayBodyContent = document.getElementById('display-body-content');
-var userInput = document.getElementById('stocks');
+var userInput = document.getElementById('news');
+var searchButton = document.getElementById('search-button');
 
 function getApi() {
 
@@ -40,3 +39,4 @@ function getApi() {
 }
 
 button.addEventListener('click', getApi);
+searchButton.addEventListener('click', searchApi);

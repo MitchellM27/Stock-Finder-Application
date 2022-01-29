@@ -1,4 +1,24 @@
 var tickerInput = 'TSLA';
+var stockName = '';
+
+fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&function=SYMBOL_SEARCH&datatype=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
+	}
+}).then(response => {
+	return response.json();
+})
+.then(data => {
+	var stockName = (data.bestMatches['0']['2. name'])
+	console.log(stockName)
+	
+})
+.catch(err => {
+	console.error(err);
+});
+
 
 
 fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + tickerInput + "&outputsize=compact&datatype=json", {
@@ -13,8 +33,6 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 
 	let tsd =(data['Time Series (Daily)']);
 	var arrayTSD = Object.keys(tsd);
-	console.log (tsd['2022-01-25']['4. close'])
-	console.log (arrayTSD[0])
 
 
 	var storeDays = [];
@@ -26,9 +44,6 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 		storeClose.push(closePrice)
 		storeDays.push(arrayTSD[i])
 	}
-
-	console.log (storeDays)
-	console.log (storeClose)
 
 	new Chart(document.getElementById("stockChart"), {
 		type: 'line',
@@ -45,7 +60,7 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 		options: {
 		  title: {
 			display: true,
-			text: 'Tesla Motors Monthly Price Chart'
+			text: tickerInput +  ' Monthly Price Chart'
 		  }
 		}
 	  });
@@ -54,8 +69,3 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 }).catch(err => {
 	console.error(err);
 });
-
-
-
-
-

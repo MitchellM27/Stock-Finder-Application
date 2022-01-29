@@ -9,7 +9,7 @@
     <title>Stock Finder Application</title>  
 
 </head>
-<body>
+<body onload="getApi()">
     <main>
         <!--NavBar-->
         <nav>
@@ -27,11 +27,11 @@
                 <i class="material-icons">close</i>
                 </div>
             </form> -->
-            <div class="searchFunc">
             <form>
                 <div class="input-field">
                     <input placeholder="Enter your search here!" id="stocks" type="text" class="validate">
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>      
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>
+                    
                 </div>
             </form>  
             <h5 id="popStocks">Popular Stocks</h5>
@@ -42,7 +42,6 @@
                 <li><a href="https://www.google.com/finance/quote/SONY:NYSE">Sony</a></li>
                 <li><a href="https://www.google.com/finance/quote/MSFT:NASDAQ">Microsoft</a></li>
             </ul>
-            </div>
           </ul>
           <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
 

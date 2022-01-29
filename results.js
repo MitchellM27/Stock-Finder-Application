@@ -1,10 +1,12 @@
 var button = document.getElementById('fetch-button');
 var searchInput = document.getElementById('stocks');
+var stockName;
+var tickerInput;
 
 function getName() {
 
-	var tickerInput = searchInput.value;
-	
+	tickerInput = searchInput.value;
+
 	fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&function=SYMBOL_SEARCH&datatype=json", {
 	"method": "GET",
 	"headers": {
@@ -15,12 +17,8 @@ function getName() {
 		return response.json();
 	})
 	.then(data => {
-		var stockName = data.bestMatches['0']['2. name']
-
+		stockName = data.bestMatches['0']['2. name']
 		console.log(stockName)
-
-		return stockName;
-		
 	})
 	.catch(err => {
 		console.error(err);
@@ -60,9 +58,9 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 	var color;
 
 	if(lastPrice > firstPrice) {
-		color = '#32a852'
+		color = '#39FF6E'
 	} else {
-		color = '#a83232'
+		color = '#FF4600'
 	}
 
 	console.log(firstPrice);
@@ -84,9 +82,10 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 		  ]
 		},
 		options: {
+			responsive: true,
 		  title: {
 			display: true,
-			text: ticker +  ' Monthly Price Chart'
+			text: stockName +  ' Price Chart (1 Month)'
 		  }
 		}
 	  });
@@ -97,4 +96,5 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 });
 }
 
+button.addEventListener('click', getName);
 button.addEventListener('click', getChart);

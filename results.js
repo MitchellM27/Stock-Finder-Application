@@ -95,6 +95,5 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 	console.error(err);
 });
 }
-
 button.addEventListener('click', getName);
 button.addEventListener('click', getChart);

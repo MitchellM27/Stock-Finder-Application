@@ -17,7 +17,7 @@ function getApi() {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
+		"x-rapidapi-key": "1166b88fdamsh98fa0df5fad139dp1c130fjsn2a164eea0534"
 	}
     }).then(response => {
         return response.json();

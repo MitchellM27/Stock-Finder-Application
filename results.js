@@ -1,26 +1,37 @@
-var tickerInput = 'TSLA';
-var stockName;
-fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&function=SYMBOL_SEARCH&datatype=json", {
+var button = document.getElementById('fetch-button');
+var searchInput = document.getElementById('stocks');
+
+function getName() {
+
+	var tickerInput = searchInput.value;
+	
+	fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&function=SYMBOL_SEARCH&datatype=json", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
 		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
 	}
-}).then(response => {
-	return response.json();
-})
-.then(data => {
-	let stockName = data.bestMatches['0']['2. name']
+	}).then(response => {
+		return response.json();
+	})
+	.then(data => {
+		var stockName = data.bestMatches['0']['2. name']
 
-	console.log(stockName)
-	
-})
-.catch(err => {
-	console.error(err);
-});
+		console.log(stockName)
 
+		return stockName;
+		
+	})
+	.catch(err => {
+		console.error(err);
+	});
+}
 
-fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + tickerInput + "&outputsize=compact&datatype=json", {
+function getChart() {
+
+	var ticker = searchInput.value;
+
+fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + ticker + "&outputsize=compact&datatype=json", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
@@ -43,6 +54,21 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 		storeClose.push(closePrice)
 		storeDays.push(arrayTSD[i])
 	}
+	
+	var firstPrice = parseFloat(storeClose[0]);
+	var lastPrice = parseFloat(storeClose[21]);
+	var color;
+
+	if(lastPrice > firstPrice) {
+		color = '#32a852'
+	} else {
+		color = '#a83232'
+	}
+
+	console.log(firstPrice);
+	console.log(lastPrice)
+	console.log(typeof lastPrice);
+	
 
 	new Chart(document.getElementById("stockChart"), {
 		type: 'line',
@@ -50,8 +76,9 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 		  labels: storeDays,
 		  datasets: [{ 
 			  data: storeClose,
-			  label: tickerInput,
-			  borderColor: "#3e95cd",
+			  label: ticker,
+			  backgroundColor: color,
+			  borderColor: color,
 			  fill: false
 			},
 		  ]
@@ -59,7 +86,7 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 		options: {
 		  title: {
 			display: true,
-			text: tickerInput +  ' Monthly Price Chart'
+			text: ticker +  ' Monthly Price Chart'
 		  }
 		}
 	  });
@@ -68,3 +95,6 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 }).catch(err => {
 	console.error(err);
 });
+}
+
+button.addEventListener('click', getChart);

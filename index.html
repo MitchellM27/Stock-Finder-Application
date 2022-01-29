@@ -10,13 +10,33 @@
 
 </head>
 <body>
-    <main>
+    <main class="wrapper">
+        <nav id="big-nav">
+            <a href="index.html" class="brand-logo center">Stock Finder Application</a>
+        </nav>
+     
         <!--NavBar-->
-        <nav>
+        <nav id="small-nav">
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo center">Stock Finder Application</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down"></ul>
+                <a href="index.html" id="logo-text" >Stock Finder Application</a>
+                <ul id="nav-mobile">
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/AAPL:NASDAQ">Apple</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/TSLA:NASDAQ">Tesla</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/AMZN:NASDAQ">Amazon</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/SONY:NYSE">Sony</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/MSFT:NASDAQ">Microsoft</a></li>
+
+                </ul>
+          
+                <div class="input-wrapper">
+                    <input placeholder="Enter your search here!" id="stocks-nav" type="text" class="validate">
+                    <a id="nav-btn" class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button-nav">Search</a>
+                    
+                </div>
+           
             </div>
+            
+
         </nav>
         
         <ul id="slide-out" class="sidenav sidenav-fixed center-align">
@@ -65,5 +85,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./app.js"></script>
+
+    <script>
+        $('#slide-out').sideNav()
+    </script>
+
 </body>
 </html>

@@ -4,25 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Stock Finder Application</title>
 </head>
 <body>
-    <main>
-        <!--NavBar-->
-        <nav>
+    <main class="wrapper">
+        <nav id="big-nav">
+            <a href="index.html" class="brand-logo center">Stock Finder Application</a>
+        </nav>
+          <nav id="small-nav">
             <div class="nav-wrapper">
-                <a href="index.html" class="brand-logo center">Stock Finder Application</a>
-                <ul id="nav-mobile" class="left hide-on-med-and-down"></ul>
+                <a href="index.html" id="logo-text" >Stock Finder Application</a>
+                <ul id="nav-mobile">
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/AAPL:NASDAQ">Apple</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/TSLA:NASDAQ">Tesla</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/AMZN:NASDAQ">Amazon</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/SONY:NYSE">Sony</a></li>
+                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/MSFT:NASDAQ">Microsoft</a></li>
+                </ul>
+
+                <div class="input-wrapper">
+                    <input placeholder="Enter your search here!" id="stocks-nav" type="text" class="validate">
+                    <a id="nav-btn" class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button-nav">Search</a>
+                    </div>
+
             </div>
         </nav>
-        
-        <div>
-            <canvas id="stockChart"></canvas>
-          </div>
 
-          <ul id="slide-out" class="sidenav sidenav-fixed center-align">
+        <div class="content">
+                    <!--Section2: Popular stock news-->
+            <div class="stock-news">
+                <h2>Recent Stock News</h2> 
+                <div class="display-title"></div>
+            </div>
+
+            <!--Section1: stock chart-->
+            <div>
+                <canvas id="stockChart"></canvas>
+            </div>
+
+        </div>
+
+        <ul id="slide-out" class="sidenav sidenav-fixed center-align">
             <!-- <form class="custom-search">
                 <div class="input-field">
                 <input id="search" type="search" required>
@@ -49,15 +73,16 @@
           <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
 
 
-        <!--Section2: Popular stock news-->
-        <div class="stock-news">
-            <h2>Recent Stock News</h2>
-            <div class="display-title"></div>
-        </div>
-
     </main>
     
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./app.js"></script>
+
+    <script>
+        $('#slide-out').sideNav()
+    </script>
 <script src="results.js"></script>
 </html>

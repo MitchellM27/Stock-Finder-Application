@@ -1,5 +1,6 @@
 :root{
     --custom-gradient: linear-gradient(to right,#162336, #325765);
+    --custom-gold: rgb(182, 160, 37);
 }
 
 
@@ -16,9 +17,6 @@ nav{
     background: var(--custom-gradient)
 }
 
-.col{
-    background-color: aquamarine;
-}
 
 #popStocks{
     margin: 10%;
@@ -32,18 +30,11 @@ nav{
 }
 
 input{
-    color: rgb(159, 140, 33);
-    background: var(--custom-gradient)
+    color: var(--custom-gold);
+    background: var(--custom-gradient);
+    text-align: center;
 }
 
-i{
-    color: rgb(159, 140, 33);
-}
-
-.material-icons{
-    color: rgb(159, 140, 33);
-    
-}
 
 .stock-news {
     padding-left: 60px;
@@ -56,5 +47,8 @@ header, main, footer {
   @media only screen and (max-width : 992px) {
     header, main, footer {
       padding-left: 0;
+    }
+    div.searchFunc{
+        display: block;
     }
   }

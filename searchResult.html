@@ -11,23 +11,49 @@
 <body>
     <main>
         <!--NavBar-->
-        <nav></nav>
-        <div></div> <!--search bar-->
-
-        <header>
-            <h1></h1> <!--name of searched company-->
-        </header>
-
-        <!--Section1: stock chart-->
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo center">Stock Finder Application</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down"></ul>
+            </div>
+        </nav>
+        
         <div>
             <canvas id="stockChart"></canvas>
           </div>
 
+          <ul id="slide-out" class="sidenav sidenav-fixed center-align">
+            <!-- <form class="custom-search">
+                <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">Search</i></label>
+                <i class="material-icons">close</i>
+                </div>
+            </form> -->
+            <form>
+                <div class="input-field">
+                    <input placeholder="Enter your search here!" id="stocks" type="text" class="validate">
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>
+                    
+                </div>
+            </form>  
+            <h5 id="popStocks">Popular Stocks</h5>
+            <ul>
+                <li><a href="https://www.google.com/finance/quote/AAPL:NASDAQ">Apple</a></li>
+                <li><a href="https://www.google.com/finance/quote/TSLA:NASDAQ">Tesla</a></li>
+                <li><a href="https://www.google.com/finance/quote/AMZN:NASDAQ">Amazon</a></li>
+                <li><a href="https://www.google.com/finance/quote/SONY:NYSE">Sony</a></li>
+                <li><a href="https://www.google.com/finance/quote/MSFT:NASDAQ">Microsoft</a></li>
+            </ul>
+          </ul>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
+
+
         <!--Section2: Popular stock news-->
-        <section>
-            <h2>News</h2> <!--company name-->
-            <div></div> <!--stock news-->
-        </section>
+        <div class="stock-news">
+            <h2>Recent Stock News</h2>
+            <div class="display-title"></div>
+        </div>
 
     </main>
     

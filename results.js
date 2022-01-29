@@ -1,11 +1,45 @@
-var searchButton = document.getElementById('fetch-button');
-var tickerInput = document.getElementById('stocks');
+var button = document.getElementById('fetch-button');
+var searchInput = document.getElementById('stocks');
 
+function getName() {
 
-function searchApi() {
+	var tickerInput = searchInput.value;
+	
+	fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&function=SYMBOL_SEARCH&datatype=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
+	}
+	}).then(response => {
+		return response.json();
+	})
+	.then(data => {
+		var stockName = data.bestMatches['0']['2. name']
 
-	document.innerHTML = '';              
-	var tickerValue = tickerInput.value;
+		console.log(stockName)
+
+		return stockName;
+		
+	})
+	.catch(err => {
+		console.error(err);
+	});
+}
+
+function getChart() {
+
+	var ticker = searchInput.value;
+
+fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + ticker + "&outputsize=compact&datatype=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
+	}
+}).then(response => {
+	return response.json();
+}).then(data=> {
 
 	if (!tickerInput.value) {
 		console.error('You need a company ticker value!');		
@@ -27,19 +61,46 @@ function searchApi() {
 		return response.json();
 	}).then(data=> {
 
-		console.log(data);
+	for (i=21 ; i>=0 ; i--) {
+		let date = arrayTSD[i];
+		let closePrice = tsd[date]['4. close']
+		storeClose.push(closePrice)
+		storeDays.push(arrayTSD[i])
+	}
+	
+	var firstPrice = parseFloat(storeClose[0]);
+	var lastPrice = parseFloat(storeClose[21]);
+	var color;
 
-		let tsd =(data['Time Series (Daily)']);
-		var arrayTSD = Object.keys(tsd);
+	if(lastPrice > firstPrice) {
+		color = '#32a852'
+	} else {
+		color = '#a83232'
+	}
 
-		var storeDays = [];
-		var storeClose = [];
+	console.log(firstPrice);
+	console.log(lastPrice)
+	console.log(typeof lastPrice);
+	
 
-		for ( var i = 21 ; i >= 0 ; i--) {
-			let date = arrayTSD[i];
-			let closePrice = tsd[date]['4. close']
-			storeClose.push(closePrice)
-			storeDays.push(arrayTSD[i])
+	new Chart(document.getElementById("stockChart"), {
+		type: 'line',
+		data: {
+		  labels: storeDays,
+		  datasets: [{ 
+			  data: storeClose,
+			  label: ticker,
+			  backgroundColor: color,
+			  borderColor: color,
+			  fill: false
+			},
+		  ]
+		},
+		options: {
+		  title: {
+			display: true,
+			text: ticker +  ' Monthly Price Chart'
+		  }
 		}
 
 		new Chart(document.getElementById("stockChart"), {
@@ -68,4 +129,9 @@ function searchApi() {
 	});
 }
 
-searchButton.addEventListener('click', searchApi);
+}).catch(err => {
+	console.error(err);
+});
+}
+
+button.addEventListener('click', getChart);

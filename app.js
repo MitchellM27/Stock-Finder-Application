@@ -1,7 +1,6 @@
 var button = document.getElementById('fetch-button');
 var displayTitle = document.getElementById('display-title');
-var userInput = document.getElementById('news');
-var searchButton = document.getElementById('search-button');
+var userInput = document.getElementById('stocks');
 
 function getApi() {
 
@@ -22,8 +21,8 @@ function getApi() {
         return response.json();
     })
     .then(data => {
+
         let stockName = data.bestMatches['0']['2. name']
-        console.log(stockName)
 
         fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ stockName + '&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
         .then(response => {
@@ -58,4 +57,3 @@ function getApi() {
 }
 
 button.addEventListener('click', getApi);
-searchButton.addEventListener('click', searchApi);

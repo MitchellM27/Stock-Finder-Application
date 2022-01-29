@@ -1,13 +1,11 @@
-var searchButton = document.getElementById('search-button');
-var tickerInput = document.getElementById('search');
+var searchButton = document.getElementById('fetch-button');
+var tickerInput = document.getElementById('stocks');
 
 
 function searchApi() {
 
 	document.innerHTML = '';              
 	var tickerValue = tickerInput.value;
-	var searchInputVal = document.querySelector('#search').value;
-
 
 	if (!tickerInput.value) {
 		console.error('You need a company ticker value!');		
@@ -18,10 +16,6 @@ function searchApi() {
     	// </div>
         return;
     }
-
-	var queryString = './searchResult.html?q=' + searchInputVal;
-
-	location.assign(queryString);  
 
 	fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + tickerValue + "&outputsize=compact&datatype=json", {
 		"method": "GET",
@@ -74,4 +68,4 @@ function searchApi() {
 	});
 }
 
-// searchButton.addEventListener('click', searchApi);
+searchButton.addEventListener('click', searchApi);

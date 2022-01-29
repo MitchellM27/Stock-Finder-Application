@@ -1,6 +1,5 @@
 var tickerInput = 'TSLA';
-var stockName = '';
-
+var stockName;
 fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&function=SYMBOL_SEARCH&datatype=json", {
 	"method": "GET",
 	"headers": {
@@ -11,14 +10,14 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + tickerInput + "&f
 	return response.json();
 })
 .then(data => {
-	var stockName = (data.bestMatches['0']['2. name'])
+	let stockName = data.bestMatches['0']['2. name']
+
 	console.log(stockName)
 	
 })
 .catch(err => {
 	console.error(err);
 });
-
 
 
 fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + tickerInput + "&outputsize=compact&datatype=json", {

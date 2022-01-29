@@ -13,30 +13,49 @@ function getApi() {
         return;
     }
 
-    fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ searchValue + '&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
-    .then(response => {
+    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + searchValue + "&function=SYMBOL_SEARCH&datatype=json", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
+		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
+	}
+    }).then(response => {
         return response.json();
-    }).then (d => {
-        var data = d.response.docs;
+    })
+    .then(data => {
+        let stockName = data.bestMatches['0']['2. name']
+        console.log(stockName)
 
-        for (var i = 0; i < data.length; i++) {
-            var showTitle = data[i].headline.main;
-            var urlLink = data[i].web_url;
-            var storyName = document.createElement('h5');
-            var displayLink = document.createElement('a');
-            displayLink.setAttribute('href', urlLink);
+        fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ stockName + '&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
+        .then(response => {
+            return response.json();
+        }).then (d => {
+            var data = d.response.docs;
 
-            storyName.textContent = showTitle;
-            displayLink.textContent = urlLink;
+            for (var i = 0; i < data.length; i++) {
+                var showTitle = data[i].headline.main;
+                var urlLink = data[i].web_url;
+                var storyName = document.createElement('h5');
+                var displayLink = document.createElement('a');
+                displayLink.setAttribute('href', urlLink);
 
-            displayTitle.append(storyName);
-            displayTitle.append(displayLink);
-        }
+                storyName.textContent = showTitle;
+                displayLink.textContent = urlLink;
+
+                displayTitle.append(storyName);
+                displayTitle.append(displayLink);
+            }
+            
+        })
+        .catch(err => {
+            console.error(err);
+        });
         
     })
     .catch(err => {
         console.error(err);
     });
+
 }
 
 button.addEventListener('click', getApi);

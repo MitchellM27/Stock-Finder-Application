@@ -27,6 +27,7 @@ function getName() {
 	});
 }
 
+
 function getChart() {
 
 	var ticker = searchInput.value;
@@ -102,32 +103,6 @@ fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&sym
 			text: ticker +  ' Monthly Price Chart'
 		  }
 		}
-
-		new Chart(document.getElementById("stockChart"), {
-			type: 'line',
-			data: {
-			labels: storeDays,
-			datasets: [{ 
-				data: storeClose,
-				label: tickerValue,
-				borderColor: "#3e95cd",
-				fill: false
-				},
-			]
-			},
-			options: {
-			title: {
-				display: true,
-				text: tickerValue + 'Monthly Chart',
-			}
-			}
-		});
-
-
-	}).catch(err => {
-		console.error(err);
-	});
-}
 
 }).catch(err => {
 	console.error(err);

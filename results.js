@@ -83,6 +83,7 @@ function getName(ticker) {
 		.catch(err => {
 			console.error(err);
 		});
+	
 }
 function getChart(ticker, stockName) {
 
@@ -161,4 +162,4 @@ function doStuff() {
 }
 
 button.addEventListener('click', doStuff);
-buttonNav.addEventListener('click', doStuff)
+buttonNav.addEventListener('click', doStuff);

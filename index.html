@@ -19,11 +19,11 @@
             <div class="nav-wrapper">
                 <a href="index.html" id="logo-text">Stock Finder Application</a>
                 <ul id="nav-mobile">
-                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/AAPL:NASDAQ">Apple</a></li>
-                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/TSLA:NASDAQ">Tesla</a></li>
-                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/AMZN:NASDAQ">Amazon</a></li>
-                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/SONY:NYSE">Sony</a></li>
-                    <li class="nav-btn"><a href="https://www.google.com/finance/quote/MSFT:NASDAQ">Microsoft</a></li>
+                    <li id = "popularAppleMobile" class="nav-btn"><a>Apple</a></li>
+                    <li id = "popularTeslaMobile" class="nav-btn"><a>Tesla</a></li>
+                    <li id = "popularAmazonMobile" class="nav-btn"><a>Amazon</a></li>
+                    <li id = "popularSonyMobile" class="nav-btn"><a>Sony</a></li>
+                    <li id = "popularMicrosoftMobile" class="nav-btn"><a>Microsoft</a></li>
                 </ul>
 
                 <div class="input-wrapper">
@@ -38,7 +38,7 @@
         <div class="content">
 
             <!--Section1: stock chart-->
-            <div>
+            <div class = "container" style = "position: relative; height:40vh; width:80vw">
                 <canvas id="stockChart" class="stockChart"></canvas>
             </div>
 
@@ -61,11 +61,11 @@
             </form>
             <h5 id="popStocks">Popular Stocks</h5>
             <ul>
-                <li><a href="https://www.google.com/finance/quote/AAPL:NASDAQ">Apple</a></li>
-                <li><a href="https://www.google.com/finance/quote/TSLA:NASDAQ">Tesla</a></li>
-                <li><a href="https://www.google.com/finance/quote/AMZN:NASDAQ">Amazon</a></li>
-                <li><a href="https://www.google.com/finance/quote/SONY:NYSE">Sony</a></li>
-                <li><a href="https://www.google.com/finance/quote/MSFT:NASDAQ">Microsoft</a></li>
+                <li ><a id="popularApple">Apple</a></li>
+                <li id="popularTesla"><a>Tesla</a></li>
+                <li id="popularAmazon"><a>Amazon</a></li>
+                <li id="popularSony"><a>Sony</a></li>
+                <li id="popularMicrosoft"><a>Microsoft</a></li>
             </ul>
             <h5 id="recentSearch">Recent Searches</h5>
             <ul id="prevSearches">

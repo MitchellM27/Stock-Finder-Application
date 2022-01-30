@@ -2,6 +2,9 @@ var button = document.getElementById('fetch-button');
 var buttonNav = document.getElementById('nav-btn')
 var searchInput = document.getElementById('stocks');
 
+var prevSearchEl = $("#prevSearches");
+var prevSearchList = [];
+
 let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701'
 var displayTitle = document.getElementById('display-title');
 
@@ -158,7 +161,50 @@ function doStuff() {
 	document.getElementById('stocks-nav').value = ''
 	//getApi(ticker)
 	getName(ticker)
+	searchList(ticker)
 	//getChart(ticker)
+}
+
+function init(){
+    var storedSearchList = JSON.parse(localStorage.getItem("prevSearchList"));
+
+    
+    if ( storedSearchList !== null) {
+        prevSearchList = storedSearchList;
+      }
+
+    renderSearchesEl();
+}
+
+init();
+
+function storeSearches(){
+	localStorage.setItem("prevSearchList", JSON.stringify(prevSearchList));
+  }
+
+function renderSearchesEl() {
+    prevSearchEl.empty();
+    
+    for (var i = 0; i < prevSearchList.length; i++) {
+      var search = prevSearchList[i];
+      
+      var li = $("<li>").text(search);
+      li.attr("id","listEl");
+      li.attr("data-search", search);
+      li.attr("class", "list-group-item");
+      prevSearchEl.prepend(li);
+    }
+}     
+
+function searchList (ticker) {
+	if (prevSearchList.includes(ticker)){
+        return false;
+    } else {
+        prevSearchList.push(ticker);
+    }
+
+    storeSearches();
+    renderSearchesEl();
 }
 
 button.addEventListener('click', doStuff);

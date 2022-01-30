@@ -30,19 +30,10 @@ nav{
     background: var(--custom-gradient)
 }
 
-.col{
-    background-color: aquamarine;
-}
 
 #popStocks{
     margin: 10%;
     background-color: white;
-}
-
-.custom-search{
-    margin-top: 15%;
-    width: 100%;
-    background: var(--custom-gradient)
 }
 
 input{
@@ -50,14 +41,6 @@ input{
     background: var(--custom-gradient)
 }
 
-i{
-    color: rgb(159, 140, 33);
-}
-
-.material-icons{
-    color: rgb(159, 140, 33);
-    
-}
 
 .stock-news {
     padding-left: 60px;    

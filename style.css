@@ -36,6 +36,16 @@ nav{
     background-color: white;
 }
 
+<<<<<<< HEAD
+=======
+
+.custom-search{
+    margin-top: 15%;
+    width: 100%;
+    background: var(--custom-gradient)
+}
+
+>>>>>>> ff86ced5a2c44b69a039c4c0cbcb56b1822aca00
 input{
     color: rgb(159, 140, 33);
     background: var(--custom-gradient)

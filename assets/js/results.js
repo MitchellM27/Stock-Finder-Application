@@ -53,7 +53,9 @@ function getName(ticker) {
 		.then(data => {
 	
 			let stockName = data.bestMatches['0']['2. name']
+			
 			getChart(ticker, stockName)
+			searchList (stockName)
 
 			fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ stockName + '&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
 			.then(response => {
@@ -160,7 +162,6 @@ function doStuff() {
 	document.getElementById('stocks-nav').value = ''
 	//getApi(ticker)
 	getName(ticker)
-	searchList(ticker)
 	//getChart(ticker)
 }
 
@@ -195,11 +196,11 @@ function renderSearchesEl() {
     }
 }     
 
-function searchList (ticker) {
-	if (prevSearchList.includes(ticker)){
+function searchList (stockName) {
+	if (prevSearchList.includes(stockName)){
         return false;
     } else {
-        prevSearchList.push(ticker);
+        prevSearchList.push(stockName);
     }
 
     storeSearches();

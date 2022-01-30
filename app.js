@@ -1,21 +1,23 @@
 var button = document.getElementById('fetch-button');
+var buttonNav = document.getElementById('nav-btn');
 var displayTitle = document.getElementById('display-title');
 var userInput = document.getElementById('stocks');
+let API_KEY_1 = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701'
 
 function getApi() {
 
-    displayTitle.innerHTML = '';
-    var searchValue = userInput.value; 
+    var ticker = document.getElementById('stocks').value || document.getElementById('stocks-nav').value
+    alert(ticker)
 
-    if (!userInput.value) {
+    if (!ticker) {
         return;
     }
 
-    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + searchValue + "&function=SYMBOL_SEARCH&datatype=json", {
+    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + ticker + "&function=SYMBOL_SEARCH&datatype=json", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-		"x-rapidapi-key": "04fab6f718msh76dd0a57c7ff60cp183364jsn8a83f4feee7e"
+		"x-rapidapi-key": API_KEY_1
 	}
     }).then(response => {
         return response.json();
@@ -57,3 +59,4 @@ function getApi() {
 }
 
 button.addEventListener('click', getApi);
+buttonNav.addEventListener('click', getApi);

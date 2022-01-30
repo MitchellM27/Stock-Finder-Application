@@ -13,7 +13,7 @@
 <body>
     <main class="wrapper">
         <nav id="big-nav">
-            <a href="index.html" class="brand-logo center">Stock Finder Application</a>
+            <a href="index.html" class="brand-logo center navLogo">Stock Finder Application</a>
         </nav>
         <nav id="small-nav">
             <div class="nav-wrapper">
@@ -36,33 +36,27 @@
         </nav>
 
         <div class="content">
-            <!--Section2: Popular stock news-->
-
 
             <!--Section1: stock chart-->
             <div>
-                <canvas id="stockChart"></canvas>
+                <canvas id="stockChart" class="stockChart"></canvas>
             </div>
 
             <div class="stock-news">
                 <h2>Recent Stock News</h2>
                 <div class="display-title" id="display-title"></div>
+                
             </div>
 
         </div>
 
         <ul id="slide-out" class="sidenav sidenav-fixed center-align">
-            <!-- <form class="custom-search">
-                <div class="input-field">
-                <input id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">Search</i></label>
-                <i class="material-icons">close</i>
-                </div>
-            </form> -->
-            <form>
+           
+            <form class="custom-search">
                 <div class="input-field">
                     <input placeholder="Enter your search here!" id="stocks" type="text" class="validate">
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>      
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>
+
                 </div>
             </form>
             <h5 id="popStocks">Popular Stocks</h5>

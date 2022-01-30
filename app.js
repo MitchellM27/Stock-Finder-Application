@@ -1,30 +1,30 @@
 var button = document.getElementById('fetch-button');
-var infoButton = document.getElementById('fetch-info-button');
+var buttonNav = document.getElementById('nav-btn');
 var displayTitle = document.getElementById('display-title');
-var displayBodyContent = document.getElementById('display-body-content');
 var userInput = document.getElementById('stocks');
+let API_KEY_1 = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701'
 
 function getApi() {
 
-    displayTitle.innerHTML = '';
-    var searchValue = userInput.value; 
+    var ticker = document.getElementById('stocks').value || document.getElementById('stocks-nav').value
+    alert(ticker)
 
-    if (!userInput.value) {
+    if (!ticker) {
         return;
     }
 
-    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + searchValue + "&function=SYMBOL_SEARCH&datatype=json", {
+    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + ticker + "&function=SYMBOL_SEARCH&datatype=json", {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-		"x-rapidapi-key": "1166b88fdamsh98fa0df5fad139dp1c130fjsn2a164eea0534"
+		"x-rapidapi-key": API_KEY_1
 	}
     }).then(response => {
         return response.json();
     })
     .then(data => {
+
         let stockName = data.bestMatches['0']['2. name']
-        console.log(stockName)
 
         fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ stockName + '&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
         .then(response => {
@@ -59,3 +59,4 @@ function getApi() {
 }
 
 button.addEventListener('click', getApi);
+buttonNav.addEventListener('click', getApi);

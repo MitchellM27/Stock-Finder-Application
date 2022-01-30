@@ -7,6 +7,7 @@ Created an app that allows users to search for stocks. Includes showing a graph 
 Technology use:
 * APIs
 * Materialize CSS
+* Chart.js
 * LocalStorage
 
 ```

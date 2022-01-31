@@ -90,9 +90,7 @@ header, main, footer {
         display: flex;
         flex-direction: column;
     }
-    .nav-btn {
 
-    }
     #nav-mobile {
         display: flex;
         justify-content: center;

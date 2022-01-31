@@ -1,5 +1,6 @@
 :root{
     --custom-gradient: linear-gradient(to right,#162336, #325765);
+    --this-gold: rgb(159, 140, 33);
 }
 
 #small-nav {
@@ -30,8 +31,9 @@ nav{
     background: var(--custom-gradient)
 }
 
-.col{
-    background-color: aquamarine;
+/* created navLogo class to center title*/
+.navLogo{
+    margin-left: 10%;
 }
 
 #popStocks{
@@ -39,37 +41,36 @@ nav{
     background-color: white;
 }
 
-
-.custom-search{
-    margin-top: 15%;
-    width: 100%;
-    background: var(--custom-gradient)
-}
-
 input{
-    color: rgb(159, 140, 33);
-    background: var(--custom-gradient)
+    color: var(--this-gold);
+    background: var(--custom-gradient);
 }
 
-i{
-    color: rgb(159, 140, 33);
-}
-
-.material-icons{
-    color: rgb(159, 140, 33);
-    
+/* had to create a class to add margin to search bar in desktop verson. */
+.custom-search{ 
+    margin-left: 10%;
+    margin-right: 15%; 
 }
 
 .stock-news {
     padding-left: 60px;    
 }
 
+/* tried to add margin to chart in desktop version. Not sure if it worked */
+/* .stockNews{
+    margin-top: 10%;
+    margin-left: 10%;
+} */
+
 header, main, footer {
     padding-left: 300px;
 }
 
+/* added border to desktop version of search bar */
 #stocks {
     padding-left: 20px;
+    box-sizing: content-box;
+    border: 5px solid var(--this-gold);
 }
 
 @media only screen and (max-width : 992px) {
@@ -78,6 +79,7 @@ header, main, footer {
     }
     #small-nav {
         display: block;
+    
     }
 
     .wrapper {
@@ -90,36 +92,47 @@ header, main, footer {
         display: flex;
         flex-direction: column;
     }
-
     #nav-mobile {
         display: flex;
         justify-content: center;
         margin-top: -20px;
     }
+    
+    /*deleted font-weight and made font-size bigger in mobile version of title */
     #logo-text {
         margin: 0 auto;
-        font-weight: 800;
+        font-size: 250%;
     }
-    .input-wrapper {
+     .input-wrapper { 
         display: flex;
         justify-content: space-around;
+        
     }
+
+    /* added border to mobile version of search bar */
     #stocks-nav {
         width: 80%;
         margin: 0;
         padding-left: 15px;
         height: 45px;
         font-size: 20px;
+        box-sizing: content-box;
+        border: 5px solid var(--this-gold);
     }
     #nav-btn {
         height: 45px;
         line-height: 45px;
         vertical-align: center;
     }
+
+    /* adds 10% to top margin of chart in mobile version */
+    #stockChart{
+        margin-top: 10%;
+    }
+
     header, main, footer {
         padding-left: 0;
     }
-}
 /*
 @media screen and (max-width: 768px) {
     .wrapper {
@@ -131,4 +144,4 @@ header, main, footer {
     nav {
         display: none;
     }
-} */
+}*/

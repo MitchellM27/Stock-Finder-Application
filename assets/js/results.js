@@ -2,6 +2,18 @@ var button = document.getElementById('fetch-button');
 var buttonNav = document.getElementById('nav-btn')
 var searchInput = document.getElementById('stocks');
 
+var apple = $("#popularApple");
+var tesla = $("#popularTesla");
+var amazon = $("#popularAmazon");
+var sony= $("#popularSony");
+var microsoft = $("#popularMicrosoft");
+
+var appleMobile = $("#popularAppleMobile");
+var teslaMobile = $("#popularTeslaMobile");
+var amazonMobile = $("#popularAmazonMobile");
+var sonyMobile = $("#popularSonyMobile");
+var microsoftMobile = $("#popularMicrosoftMobile");
+
 var prevSearchEl = $("#prevSearches");
 var prevSearchList = [];
 
@@ -88,6 +100,7 @@ function getName(ticker) {
 		.catch(err => {
 			console.error(err);
 		});
+	
 }
 function getChart(ticker, stockName) {
 
@@ -119,16 +132,15 @@ function getChart(ticker, stockName) {
 		var color;
 
 		if (lastPrice > firstPrice) {
-			color = '#39FF6E'
+			color = '#18B202'
 		} else {
 			color = '#FF4600'
 		}
 
-		console.log(firstPrice);
-		console.log(lastPrice)
-		console.log(typeof lastPrice);
+		var stockChart = document.getElementById("stockChart");
+		stockChart.innerHTML = '';
 
-		new Chart(document.getElementById("stockChart"), {
+		new Chart(stockChart, {
 			type: 'line',
 			data: {
 				labels: storeDays,
@@ -143,6 +155,8 @@ function getChart(ticker, stockName) {
 			},
 			options: {
 				responsive: true,
+				maintainAspectRatio: false,
+
 				title: {
 					display: true,
 					text: stockName + ' Price Chart (1 Month)'
@@ -207,5 +221,65 @@ function searchList (stockName) {
     renderSearchesEl();
 }
 
+apple.click (function () {
+	var ticker = 'aapl';
+	console.log(ticker)
+	getName (ticker)
+})
+
+tesla.click (function () {
+	var ticker = 'tsla';
+	console.log(ticker)
+	getName (ticker)
+})
+
+amazon.click (function () {
+	var ticker = 'amzn';
+	console.log(ticker)
+	getName (ticker)
+})
+
+sony.click (function () {
+	var ticker = 'sony';
+	console.log(ticker)
+	getName (ticker)
+})
+
+microsoft.click (function () {
+	var ticker = 'msft';
+	console.log(ticker)
+	getName (ticker)
+})
+
+appleMobile.click (function () {
+	var ticker = 'aapl';
+	console.log(ticker)
+	getName (ticker)
+})
+
+teslaMobile.click (function () {
+	var ticker = 'tsla';
+	console.log(ticker)
+	getName (ticker)
+})
+
+amazonMobile.click (function () {
+	var ticker = 'amzn';
+	console.log(ticker)
+	getName (ticker)
+})
+
+sonyMobile.click (function () {
+	var ticker = 'sony';
+	console.log(ticker)
+	getName (ticker)
+})
+
+microsoftMobile.click (function () {
+	var ticker = 'msft';
+	console.log(ticker)
+	getName (ticker)
+})
+
 button.addEventListener('click', doStuff);
-buttonNav.addEventListener('click', doStuff)
+buttonNav.addEventListener('click', doStuff);

@@ -16,7 +16,7 @@ var sonyMobile = $("#popularSonyMobile");
 var microsoftMobile = $("#popularMicrosoftMobile");
 
 var prevSearchEl = $("#prevSearches");
-var prevSearchList = [];
+var prevSearchList = []; 
 
 let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701';
 let API_KEY2 = '60c7142a7emsh8e3c53ea741022cp1db6f9jsnd730391d13e6';
@@ -64,7 +64,6 @@ function getName(ticker) {
 		.then(data => {
 	
 			let stockName = data.bestMatches['0']['2. name']
-			
 			getChart(ticker, stockName)
 			searchList (stockName)
 

@@ -31,7 +31,6 @@
                     <a id="nav-btn" class="waves-effect waves-light btn modal-trigger" href="#modal1"
                         id="fetch-button-nav">Search</a>
                 </div>
-
             </div>
         </nav>
 
@@ -45,7 +44,6 @@
             <div class="stock-news">
                 <h2>Recent Stock News</h2>
                 <div class="display-title" id="display-title"></div>
-                
             </div>
 
         </div>
@@ -56,9 +54,9 @@
                 <div class="input-field">
                     <input placeholder="Enter your search here!" id="stocks" type="text" class="validate">
                     <a class="waves-effect waves-light btn modal-trigger" href="#modal1" id="fetch-button">Search</a>
-
                 </div>
             </form>
+
             <h5 id="popStocks">Popular Stocks</h5>
             <ul>
                 <li ><a id="popularApple">Apple</a></li>
@@ -69,13 +67,18 @@
             </ul>
             <h5 id="recentSearch">Recent Searches</h5>
             <ul id="prevSearches">
-                
             </ul>
-
         </ul>
             
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons"></i></a>
 
+        <!-- Modal Section -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&#10006;</span>
+                <h3>Please input ticker or company name!</h3>
+            </div>
+        </div>
 
     </main>
 

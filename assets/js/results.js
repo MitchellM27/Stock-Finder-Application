@@ -1,5 +1,5 @@
 var button = document.getElementById('fetch-button');
-var buttonNav = document.getElementById('nav-btn')
+var buttonNav = document.getElementById('nav-btn');
 var searchInput = document.getElementById('stocks');
 
 var apple = $("#popularApple");
@@ -17,40 +17,37 @@ var microsoftMobile = $("#popularMicrosoftMobile");
 var prevSearchEl = $("#prevSearches");
 var prevSearchList = [];
 
-let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701'
+let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701';
 var displayTitle = document.getElementById('display-title');
 
-/*
-function getApi(ticker) {
+function getModal () {
 
+	// Get the modal
+	var modal = document.getElementById("myModal");
 
-    if (!ticker) {
-        return;
-    }
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	
+	// display block
+	modal.style.display = "block";
 
-    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + ticker + "&function=SYMBOL_SEARCH&datatype=json", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-		"x-rapidapi-key": API_KEY
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
 	}
-    }).then(response => {
-        return response.json();
-    })
-    .then(data => {
 
-        
-    })
-    .catch(err => {
-        console.error(err);
-    });
-
-}*/
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
 
 function getName(ticker) {
 
 	if (!ticker) {
-		return alert("Please include a ticker value")
+		return getModal();
 	}
 
 	fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + ticker + "&function=SYMBOL_SEARCH&datatype=json", {
@@ -102,6 +99,7 @@ function getName(ticker) {
 		});
 	
 }
+
 function getChart(ticker, stockName) {
 
 	fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + ticker + "&outputsize=compact&datatype=json", {

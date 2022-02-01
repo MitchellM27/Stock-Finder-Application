@@ -18,6 +18,7 @@ var prevSearchEl = $("#prevSearches");
 var prevSearchList = [];
 
 let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701';
+let API_KEY2 = '60c7142a7emsh8e3c53ea741022cp1db6f9jsnd730391d13e6';
 var displayTitle = document.getElementById('display-title');
 
 function getModal () {
@@ -106,7 +107,7 @@ function getChart(ticker, stockName) {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-			"x-rapidapi-key": API_KEY
+			"x-rapidapi-key": API_KEY2
 		}
 	}).then(response => {
 		return response.json();

@@ -1,6 +1,7 @@
 var button = document.getElementById('fetch-button');
-var buttonNav = document.getElementById('nav-btn')
+var buttonNav = document.getElementById('nav-btn');
 var searchInput = document.getElementById('stocks');
+var chartDivEl = document.getElementById('chartDiv');
 
 var apple = $("#popularApple");
 var tesla = $("#popularTesla");
@@ -17,14 +18,38 @@ var microsoftMobile = $("#popularMicrosoftMobile");
 var prevSearchEl = $("#prevSearches");
 var prevSearchList = []; 
 
-let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701'
+let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701';
+let API_KEY2 = '60c7142a7emsh8e3c53ea741022cp1db6f9jsnd730391d13e6';
 var displayTitle = document.getElementById('display-title');
 
+function getModal () {
+
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	
+	// display block
+	modal.style.display = "block";
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
 
 function getName(ticker) {
 
 	if (!ticker) {
-		return alert("Please include a ticker value")
+		return getModal();
 	}
 
 	fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + ticker + "&function=SYMBOL_SEARCH&datatype=json", {
@@ -75,13 +100,16 @@ function getName(ticker) {
 		});
 	
 }
+
 function getChart(ticker, stockName) {
+
+	chartDivEl.style.display = "block";
 
 	fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + ticker + "&outputsize=compact&datatype=json", {
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-			"x-rapidapi-key": API_KEY
+			"x-rapidapi-key": API_KEY2
 		}
 	}).then(response => {
 		return response.json();
@@ -113,7 +141,13 @@ function getChart(ticker, stockName) {
 		var stockChart = document.getElementById("stockChart");
 		stockChart.innerHTML = '';
 
-		new Chart(stockChart, {
+		var chart;
+
+		if (chart) {
+			chart.destroy();
+		}
+
+		chart = new Chart(stockChart, {
 			type: 'line',
 			data: {
 				labels: storeDays,
@@ -155,12 +189,43 @@ function doStuff() {
 function init(){
     var storedSearchList = JSON.parse(localStorage.getItem("prevSearchList"));
 
+	chartDivEl.style.display = "none";
     
     if ( storedSearchList !== null) {
         prevSearchList = storedSearchList;
       }
 
     renderSearchesEl();
+	loadingPageNews();
+
+}
+
+function loadingPageNews () {
+	fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=stocks&api-key=' + 'oiZefQYBJaX74nivdLCxx5Mq615naOVs')
+			.then(response => {
+				return response.json();
+			}).then (d => {
+				var data = d.response.docs;
+				displayTitle.innerHTML = ''
+	
+				for (var i = 0; i < data.length; i++) {
+					var showTitle = data[i].headline.main;
+					var urlLink = data[i].web_url;
+					var storyName = document.createElement('h5');
+					var displayLink = document.createElement('a');
+					displayLink.setAttribute('href', urlLink);
+	
+					storyName.textContent = showTitle;
+					displayLink.textContent = urlLink;
+	
+					displayTitle.append(storyName);
+					displayTitle.append(displayLink);
+				}
+				
+			})
+			.catch(err => {
+				console.error(err);
+			});
 }
 
 init();

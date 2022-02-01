@@ -11,6 +11,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .wrapper {
@@ -38,8 +39,24 @@ nav{
 
 #popStocks{
     margin: 10%;
-    background-color: white;
+    font-weight: 700;
+    color: #162336;
 }
+
+#recentSearch{
+    font-weight: 700;
+    color: #162336;
+}
+
+#prevSearches{
+    font-size: 16px;
+}
+
+#recStockNews{
+    font-weight: 600;
+    color: #162336;
+}
+
 
 input{
     color: var(--this-gold);
@@ -55,12 +72,6 @@ input{
 .stock-news {
     padding-left: 60px;    
 }
-
-/* tried to add margin to chart in desktop version. Not sure if it worked */
-/* .stockNews{
-    margin-top: 10%;
-    margin-left: 10%;
-} */
 
 header, main, footer {
     padding-left: 300px;
@@ -136,15 +147,3 @@ header, main, footer {
         padding-left: 0;
     }
 }
-/*
-@media screen and (max-width: 768px) {
-    .wrapper {
-        justify-content: center;
-    }
-    .left {
-        flex-basis: 95%;
-    }
-    nav {
-        display: none;
-    }
-} */

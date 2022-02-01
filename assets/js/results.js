@@ -15,37 +15,11 @@ var sonyMobile = $("#popularSonyMobile");
 var microsoftMobile = $("#popularMicrosoftMobile");
 
 var prevSearchEl = $("#prevSearches");
-var prevSearchList = [];
+var prevSearchList = []; 
 
 let API_KEY = 'f291824c7bmsh540cb4118e2e904p137ff7jsn7d53ba9ab701'
 var displayTitle = document.getElementById('display-title');
 
-/*
-function getApi(ticker) {
-
-
-    if (!ticker) {
-        return;
-    }
-
-    fetch("https://alpha-vantage.p.rapidapi.com/query?keywords=" + ticker + "&function=SYMBOL_SEARCH&datatype=json", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "alpha-vantage.p.rapidapi.com",
-		"x-rapidapi-key": API_KEY
-	}
-    }).then(response => {
-        return response.json();
-    })
-    .then(data => {
-
-        
-    })
-    .catch(err => {
-        console.error(err);
-    });
-
-}*/
 
 function getName(ticker) {
 
@@ -65,7 +39,6 @@ function getName(ticker) {
 		.then(data => {
 	
 			let stockName = data.bestMatches['0']['2. name']
-			
 			getChart(ticker, stockName)
 			searchList (stockName)
 

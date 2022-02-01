@@ -2,6 +2,7 @@ var button = document.getElementById('fetch-button');
 var buttonNav = document.getElementById('nav-btn');
 var searchInput = document.getElementById('stocks');
 var chartDivEl = document.getElementById('chartDiv');
+var chart;
 
 var apple = $("#popularApple");
 var tesla = $("#popularTesla");
@@ -105,6 +106,10 @@ function getChart(ticker, stockName) {
 
 	chartDivEl.style.display = "block";
 
+	if (chart) {
+		chart.destroy();
+	}
+
 	fetch("https://alpha-vantage.p.rapidapi.com/query?function=TIME_SERIES_DAILY&symbol=" + ticker + "&outputsize=compact&datatype=json", {
 		"method": "GET",
 		"headers": {
@@ -141,19 +146,13 @@ function getChart(ticker, stockName) {
 		var stockChart = document.getElementById("stockChart");
 		stockChart.innerHTML = '';
 
-		var chart;
-
-		if (chart) {
-			chart.destroy();
-		}
-
 		chart = new Chart(stockChart, {
 			type: 'line',
 			data: {
 				labels: storeDays,
 				datasets: [{
 					data: storeClose,
-					label: ticker,
+					label: ticker.toUpperCase(),
 					backgroundColor: color,
 					borderColor: color,
 					fill: false

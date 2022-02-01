@@ -120,6 +120,7 @@ header, main, footer {
 
     #small-nav {
         display: block;
+        border-bottom: 5px solid var(--this-gold);
     }
 
     .wrapper {
